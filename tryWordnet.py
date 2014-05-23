@@ -56,7 +56,7 @@ array([[ 0.46153846,  0.125     ,  0.13333333,  0.125     ,  0.125     ,
    [ 0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
      0.        ]])
 '''
-#xsyn[0].definition
+#print xsyn[0].definition
 #'a party of people assembled to promote sociability and communal activity'
-#ysyn[0].definition
+#print ysyn[0].definition
 #'an interconnected system of things or people'
