@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import re, sys, nltk
+=======
+import re
+import sys
+>>>>>>> fbf8e8af44809178703f3f34f83f5dc485811f1e
 
 fileName = sys.argv[-1]
 
@@ -56,13 +61,19 @@ check = ""
 '''
 
 #returns None if match found
+<<<<<<< HEAD
 newPattern = re.compile(r"\(?M{0,4}CM|CD|D?C{0,3}XC|XL|L?X{0,3}IX|IV|V?I{0,3}\)", re.I)
 checkPattern = re.compile(r"\(?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\) *", re.I)
+=======
+newPattern = re.compile(r"\(?M{0,4}CM|CD|D?C{0,3}XC|XL|L?X{0,3}IX|IV|V?I{0,3}\)")
+checkPattern = re.compile(r"^\(?M{0,4}CM|CD|D?C{0,3}XC|XL|L?X{0,3}IX|IV|V?I{0,3}\)")
+>>>>>>> fbf8e8af44809178703f3f34f83f5dc485811f1e
 resString = ""
 for _ in iteratable:
 	resString = str(_.group())
 	if(newPattern.match(resString) == None):
 		for a in checkPattern.finditer(resString):
+<<<<<<< HEAD
 			resString = resString.replace(a.group(), "")
 	else:
 		print "notCool"
@@ -86,5 +97,16 @@ for _ in iteratable:
 	print "AXXXB", resString, "MMMM"
 
 	resultFile.write("\n"+str(resString)+"\n")
+=======
+			print a.group()
+	else:
+		print "notCool"
+		continue
+	#resString = resString[last:]
+	resString = resString.replace("\n", "")
+	print "AXXXB", resString, "MMMM"
+
+	resultFile.write("\n"+resString+"\n")
+>>>>>>> fbf8e8af44809178703f3f34f83f5dc485811f1e
 
 resultFile.close()

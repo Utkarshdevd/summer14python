@@ -1,0 +1,13 @@
+import re
+
+c = 0
+
+s = "(i) This is the first statement \n (ii) This is the second statement! .... \n (ix) Final statement, did you gotcha?"
+
+pattern = re.compile(r"\((ix|iv|v?i{0,3})\)")
+
+#get first match!!
+for m in pattern.finditer(s):
+	
+
+
