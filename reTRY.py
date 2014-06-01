@@ -1,5 +1,5 @@
 import re, sys, nltk
-import nameGen
+import nameGen, getText
 
 parameterFile = sys.argv[-1]
 
@@ -31,25 +31,12 @@ for currentNo in range(startNo, endNo+1):
 	#TRIAL STRING
 	#s = "(i) This is the first of 4 statements \n (ii) This is the second statement! .... \n (iii) Final statement, did you gotcha? (iv)aaa"
 	# ALL FIT : ^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$
-	pattern = re.compile(r"\(?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\)(.*?)\. *\n", re.I)
-	iteratable = pattern.finditer(s)
 
-	count  = 0
-	check = ""
+	# Get list of violations
+	splitText = getText.getText(s)
 
-	#returns None if match found, iii) and (iii)<TAB or SPACES>
-	newPattern = re.compile(r"\(?M{0,4}CM|CD|D?C{0,3}XC|XL|L?X{0,3}IX|IV|V?I{0,3}\)", re.I)
-	checkPattern = re.compile(r"\(?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\) *", re.I)
-	resString = ""
-	for _ in iteratable:
-		resString = str(_.group())
-		if(newPattern.match(resString) == None):
-			for a in checkPattern.finditer(resString):
-				resString = resString.replace(a.group(), "")
-		else:
-			print "notCool"
-			continue
-		
+	for resString in splitText:
+		# For each violation	
 		# We get all text b/w two roman numerals, without new lines
 		resString = resString.replace("\n", "")
 
@@ -58,15 +45,15 @@ for currentNo in range(startNo, endNo+1):
 		resString = [w for w in resString if not w in nltk.corpus.stopwords.words('english')]
 		resString = " ".join(resString)
 		
-		
 		# Clear all . , - ' " and other stuff
 		pat = re.compile(r"[^\w\s+]")
 		for _ in pat.finditer(resString):
-			resString = resString.replace(_.group(), "")
+			resString = resString.replace(_.group(), " ")
 
 		# string is now ready for extraction
-		#print "AXXXB", resString, "MMMM"
+		print "AXXXB", resString, "MMMM"
 
+		'''Final file with all violations, stopwords, punctuations removed'''
 		resultFile.write("\n"+str(resString)+"\n")
 
 	resultFile.close()
