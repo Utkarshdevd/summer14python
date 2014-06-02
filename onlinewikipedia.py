@@ -56,9 +56,9 @@ def main():
     # sooner than this.)
     for iteration in range(0, documentstoanalyze):
         # Download some articles
-        (docset, articlenames) = \
+        '''(docset, articlenames) = \
             wikirandom.get_random_wikipedia_articles(batchsize)
-
+        '''
         '''-----------------------------------'''
         docset = getDocList.getDocs()
         '''-----------------------------------'''
