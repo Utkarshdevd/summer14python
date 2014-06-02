@@ -42,23 +42,29 @@ for currentNo in range(startNo, endNo+1):
 	data = re.split("\s+", data)
 	data = [w for w in data if not w in nltk.corpus.stopwords.words('english')]
 	data = " ".join(data)
-	
+
 	data = data.split()
 
 	for word in data:
 		for v in vocab:
 			if v == word:
 				flag = False
-
 		if flag:
 			vocab.append(word)
 			res.append(word)
 		flag = True
+
 toc = time.time()
 print "Time taken : ", toc-tic, " sec."
 
+# Appending new words to a seperate dictionary
 dictName = "newDict.txt"
 
 with open(dictName, "w+") as myfile:
+	for word in res:
+		myfile.write(str(word)+"\n")
+
+#append new word to the BIG dictionary
+with open(dictionaryFile, "a") as myfile:
 	for word in res:
 		myfile.write(str(word)+"\n")

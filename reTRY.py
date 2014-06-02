@@ -41,9 +41,14 @@ for currentNo in range(startNo, endNo+1):
 		resString = resString.replace("\n", "")
 		
 		# Clear all . , - ' " and other stuff
-		pat = re.compile(r"([^\w\.])", re.I)
+		pat = re.compile(r"([^\w])", re.I)
 		for _ in pat.finditer(resString):
 			resString = resString.replace(_.group(), " ")
+
+		pat = re.compile(r" ([a-z]) ", re.I)
+		for _ in pat.finditer(resString):
+			resString = resString.replace(_.group(), " ")
+
 		'''
 		pat = re.compile(r"[\d-]", re.I)
 		for _ in pat.finditer(resString):
