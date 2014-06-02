@@ -34,3 +34,12 @@ NLTK library is used along with REGEX, in Python.
  - getDocList.py 		:	appends all purged docs into a list, for use in onlinewikipedia.py(HACK)  
  - printtopics.py 		:	prints results of lda, takes dictionary and lamda or gamma file as input  
  - dictnostops.txt 	: 	vocab source used, is updated by new words from data  
+
+ STARTING OFF  
+
+'''
+sudo python reTry.py PARAMETER_FILE.txt
+sudo python removeDict.py dictnostops.txt PARAMETER_FILE.txt
+sudo python onlinewikipedia.py dictnostops.txt PARAMETER_FILE.txt
+sudo python printtopics.py dictnostops.txt
+'''
