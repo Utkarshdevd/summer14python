@@ -1,4 +1,4 @@
-import sys, time
+import sys, time, nltk
 import nameGen
 
 '''Get Parameter File data'''
@@ -21,6 +21,11 @@ dictionaryFile = sys.argv[-2]
 with open(dictionaryFile, "r") as myfile:
 		vocab = myfile.read()
 vocab = vocab.split()
+
+# Clear string of all stop words, then rejoin string
+resString = re.split("\s+", resString)
+resString = [w for w in resString if not w in nltk.corpus.stopwords.words('english')]
+resString = " ".join(resString)
 
 '''Weed out words found in vocabulary and add new words to it'''
 res = []

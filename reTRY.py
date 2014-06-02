@@ -39,11 +39,6 @@ for currentNo in range(startNo, endNo+1):
 		# For each violation	
 		# We get all text b/w two roman numerals, without new lines
 		resString = resString.replace("\n", "")
-
-		# Clear string of all stop words, then rejoin string
-		resString = re.split("\s+", resString)
-		resString = [w for w in resString if not w in nltk.corpus.stopwords.words('english')]
-		resString = " ".join(resString)
 		
 		# Clear all . , - ' " and other stuff
 		pat = re.compile(r"([^\w\.])", re.I)
