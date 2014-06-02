@@ -46,7 +46,11 @@ for currentNo in range(startNo, endNo+1):
 
 		if flag:
 			vocab.append(word)
-			res2.append(word)
+			res.append(word)
 		flag = True
 
-print len(res2)
+dictName = "newDict.txt"
+
+with open(dictName, "w+") as myfile:
+	for word in res:
+		myfile.write(str(word)+"\n")
