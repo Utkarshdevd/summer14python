@@ -25,11 +25,11 @@ FOLDER STRUCTURE
 FILE STRUCTURE  
 
  - onlineldavb.py 		:	functions for processing documents, and performing LDA topic modelling  
- -reTRY.py 	   		:	extracts violations from raw clearance docs  
-removeDict.py 		:	purges data off stopwords(english), punctuations, numbers(possible loss of data)   
-onlinewikipedia.py  :	controller file for running LDA on data  
-PARAMETER_FILE.txt 	:	Contains all modifiable parameters  
-nameGen.py 			:	generates filenames of data, results using input from parameter file  
-getDocList.py 		:	appends all purged docs into a list, for use in onlinewikipedia.py(HACK)  
-printtopics.py 		:	prints results of lda, takes dictionary and lamda or gamma file as input  
-dictnostops.txt 	: 	vocab source used, is updated by new words from data  
+ - reTRY.py 	   		:	extracts violations from raw clearance docs  
+ - removeDict.py 		:	purges data off stopwords(english), punctuations, numbers(possible loss of data)   
+ - onlinewikipedia.py  :	controller file for running LDA on data  
+ - PARAMETER_FILE.txt 	:	Contains all modifiable parameters  
+ - nameGen.py 			:	generates filenames of data, results using input from parameter file  
+ - getDocList.py 		:	appends all purged docs into a list, for use in onlinewikipedia.py(HACK)  
+ - printtopics.py 		:	prints results of lda, takes dictionary and lamda or gamma file as input  
+ -dictnostops.txt 	: 	vocab source used, is updated by new words from data  
