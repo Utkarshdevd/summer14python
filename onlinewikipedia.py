@@ -60,7 +60,7 @@ def main():
             wikirandom.get_random_wikipedia_articles(batchsize)
         '''
         '''-----------------------------------'''
-        docset = getDocList.getDocs()
+        docset = getDocList.getDocs(sys.argv[2])
         '''-----------------------------------'''
 
         # Give them to online LDA

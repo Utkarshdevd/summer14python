@@ -1,7 +1,7 @@
 PARAMETER FILE FOR DICTIONARY APPENDING
 path = data/
 startNo = 1
-endNo = 6
+endNo = 24
 extension = txt
 baseName = sampleData
 res_Path = res/

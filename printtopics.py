@@ -32,8 +32,6 @@ def main():
     vocab = str.split(file(sys.argv[1]).read())
     testlambda = numpy.loadtxt(sys.argv[2])
 
-    print vocab
-
     for k in range(0, len(testlambda)):
         # all in a row
         lambdak = list(testlambda[k, :])
@@ -42,9 +40,9 @@ def main():
         temp = sorted(temp, key = lambda x: x[0], reverse=True)
         print 'topic %d:' % (k)
         # feel free to change the "53" here to whatever fits your screen nicely.
-        '''for i in range(0, 53):
+        for i in range(0, 53):
             print '%20s  \t---\t  %.4f' % (vocab[temp[i][1]], temp[i][0])
-        print'''
+        print
 
 if __name__ == '__main__':
     main()
