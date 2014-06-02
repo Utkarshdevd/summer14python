@@ -1,5 +1,5 @@
-import re, sys, nltk
-import nameGen, getText
+import re, sys, nltk, time
+import nameGen, getText, getDocList
 
 parameterFile = sys.argv[-1]
 
@@ -34,7 +34,7 @@ for currentNo in range(startNo, endNo+1):
 
 	# Get list of violations
 	splitText = getText.getText(s)
-
+	tic = time.time()
 	for resString in splitText:
 		# For each violation	
 		# We get all text b/w two roman numerals, without new lines
@@ -46,14 +46,21 @@ for currentNo in range(startNo, endNo+1):
 		resString = " ".join(resString)
 		
 		# Clear all . , - ' " and other stuff
-		pat = re.compile(r"[^\w\s+]")
+		pat = re.compile(r"([^\w\.])", re.I)
 		for _ in pat.finditer(resString):
 			resString = resString.replace(_.group(), " ")
-
+		'''
+		pat = re.compile(r"[\d-]", re.I)
+		for _ in pat.finditer(resString):
+			resString = resString.replace(_.group(), " ")
+		'''
 		# string is now ready for extraction
 		print "AXXXB", resString, "MMMM"
 
 		'''Final file with all violations, stopwords, punctuations removed'''
 		resultFile.write("\n"+str(resString)+"\n")
+	toc = time.time()
+
+	print "Time taken : ", toc-tic, " sec."
 
 	resultFile.close()

@@ -1,4 +1,4 @@
-import sys
+import sys, time
 import nameGen
 
 '''Get Parameter File data'''
@@ -29,7 +29,7 @@ Attempt idiomatic version, this one cannot update vocab at the same time, hence 
 but is faster than the other approach
 res = [word for word in data if not word in vocab]
 '''
-
+tic = time.time()
 flag = True
 for currentNo in range(startNo, endNo+1):
 	# Get file name
@@ -48,6 +48,8 @@ for currentNo in range(startNo, endNo+1):
 			vocab.append(word)
 			res.append(word)
 		flag = True
+toc = time.time()
+print "Time taken : ", toc-tic, " sec."
 
 dictName = "newDict.txt"
 
