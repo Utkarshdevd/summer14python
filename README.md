@@ -23,8 +23,9 @@ FOLDER STRUCTURE
  - res /		# here the corresponding violations are stripped and kept  
 
 FILE STRUCTURE  
-onlineldavb.py 		:	functions for processing documents, and performing LDA topic modelling  
-reTRY.py 	   		:	extracts violations from raw clearance docs  
+
+-onlineldavb.py 		:	functions for processing documents, and performing LDA topic modelling  
+-reTRY.py 	   		:	extracts violations from raw clearance docs  
 removeDict.py 		:	purges data off stopwords(english), punctuations, numbers(possible loss of data)   
 onlinewikipedia.py  :	controller file for running LDA on data  
 PARAMETER_FILE.txt 	:	Contains all modifiable parameters  
