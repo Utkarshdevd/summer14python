@@ -11,7 +11,8 @@ NLTK library is used along with REGEX, in Python.
 
 REQUIREMENTS 
 
-=> SCIPY 
+=> SCIPY
+
 => RE 
 => NUMPY 
 => NLTK 
