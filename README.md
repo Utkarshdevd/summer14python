@@ -11,10 +11,10 @@ NLTK library is used along with REGEX, in Python.
 
 REQUIREMENTS 
 
-=> SCIPY
-=> RE 
-=> NUMPY 
-=> NLTK 
+=> SCIPY  
+=> RE  
+=> NUMPY  
+=> NLTK  
 
 FOLDER STRUCTURE
  - lambda/		# stores lamda.dat files from LDA 
