@@ -9,21 +9,21 @@ This extractor will take out all the violation passages in typical environmental
 and environmental clearances texts.  
 NLTK library is used along with REGEX, in Python.  
 
-### REQUIREMENTS 
+## REQUIREMENTS
 ======
  - SCIPY  
  - RE  
  - NUMPY  
  - NLTK  
 
-### FOLDER STRUCTURE
+## FOLDER STRUCTURE
 ======
  - lambda/		# stores lamda.dat files from LDA  
  - gamma/		# stores gamma.dat files from LDA  
  - data/		# this is the data folder, all your text data goes here with a proper name convention  
  - res /		# here the corresponding violations are stripped and kept  
 
-### FILE STRUCTURE  
+## FILE STRUCTURE
 ======
  - onlineldavb.py 		:	functions for processing documents, and performing LDA topic modelling  
  - reTRY.py 	   		:	extracts violations from raw clearance docs  
