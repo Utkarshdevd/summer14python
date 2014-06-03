@@ -36,10 +36,10 @@ NLTK library is used along with REGEX, in Python.
  - dictnostops.txt 	: 	vocab source used, is updated by new words from data  
 
  STARTING OFF  
-
-'''
-sudo python reTry.py PARAMETER_FILE.txt
-sudo python removeDict.py dictnostops.txt PARAMETER_FILE.txt
-sudo python onlinewikipedia.py dictnostops.txt PARAMETER_FILE.txt
-sudo python printtopics.py dictnostops.txt
-'''
+ 
+```
+sudo python reTry.py PARAMETER_FILE.txt  
+sudo python removeDict.py dictnostops.txt PARAMETER_FILE.txt  
+sudo python onlinewikipedia.py dictnostops.txt PARAMETER_FILE.txt  
+sudo python printtopics.py dictnostops.txt  
+```
