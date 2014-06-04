@@ -1,9 +1,10 @@
 import re, sys, nltk, time
 import nameGen, getText, getDocList
 
+num = 0
 parameterFile = sys.argv[-1]
 
-paramF = open(parameterFile, 'r')
+paramF = open(parameterFile, 'r+')
 header = paramF.readline().strip()
 path = paramF.readline().strip().split(" ")[2]
 startNo = int(paramF.readline().strip().split(" ")[2])
@@ -14,6 +15,7 @@ res_Path = paramF.readline().strip().split(" ")[2]
 res_BaseName = paramF.readline().strip().split(" ")[2]
 res_Extension = paramF.readline().strip().split(" ")[2]
 
+tic = time.time()
 for currentNo in range(startNo, endNo+1):
 	fileName =  nameGen.getVar(path, baseName, currentNo, ext)
 
@@ -21,9 +23,6 @@ for currentNo in range(startNo, endNo+1):
 	    s=myfile.read()
 
 	first, last = 0, 0
-
-	resFileName = nameGen.getVar(res_Path, res_BaseName, currentNo, res_Extension)
-	resultFile = open(resFileName, "w+")
 
 	#get first and last match position
 	length = 0
@@ -34,7 +33,6 @@ for currentNo in range(startNo, endNo+1):
 
 	# Get list of violations
 	splitText = getText.getText(s)
-	tic = time.time()
 	for resString in splitText:
 		# For each violation	
 		# We get all text b/w two roman numerals, without new lines
@@ -58,9 +56,16 @@ for currentNo in range(startNo, endNo+1):
 		print "AXXXB", resString, "MMMM"
 
 		'''Final file with all violations, stopwords, punctuations removed'''
-		resultFile.write("\n"+str(resString)+"\n")
-	toc = time.time()
+		for _ in resString.split("\n"):
+			resFileName = nameGen.getVar(res_Path, res_BaseName, num, res_Extension)
+			with open(resFileName, "w+") as resultFile:
+				resultFile.write("\n"+str(resString)+"\n")
+			num += 1
 
-	print "Time taken : ", toc-tic, " sec."
+toc = time.time()
 
-	resultFile.close()
+print "Time taken : ", toc-tic, " sec."
+
+paramF.write("res_startNo = "+str(0)+"\n")
+paramF.write("res_endNo = "+str(num)+"\n")
+paramF.close()
