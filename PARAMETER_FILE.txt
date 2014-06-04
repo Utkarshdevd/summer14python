@@ -7,3 +7,5 @@ baseName = sampleData
 res_Path = res/
 res_BaseName = res_
 res_Extension = txt
+res_startNo = 0
+res_endNo = 801

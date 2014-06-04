@@ -14,6 +14,8 @@ baseName = paramF.readline().strip().split(" ")[2]
 res_Path = paramF.readline().strip().split(" ")[2]
 res_BaseName = paramF.readline().strip().split(" ")[2]
 res_Extension = paramF.readline().strip().split(" ")[2]
+res_StartNo = int(paramF.readline().strip().split(" ")[2])
+res_EndNo = int(paramF.readline().strip().split(" ")[2])
 
 '''Initalize Dictionary'''
 dictionaryFile = sys.argv[-2]
@@ -31,12 +33,13 @@ res = [word for word in data if not word in vocab]
 '''
 tic = time.time()
 flag = True
-for currentNo in range(startNo, endNo+1):
+for currentNo in range(res_StartNo, res_EndNo):
 	# Get file name
 	fileName = nameGen.getVar(res_Path, res_BaseName, currentNo, res_Extension)
 	# Get file data
 	with open(fileName, "r") as myfile:
 	    data = myfile.read()
+	    data = data.lower()
 
 	# Clear string of all stop words, then rejoin string
 	data = re.split("\s+", data)
@@ -61,10 +64,5 @@ print "Time taken : ", toc-tic, " sec."
 dictName = "newDict.txt"
 
 with open(dictName, "w+") as myfile:
-	for word in res:
-		myfile.write(str(word)+"\n")
-
-#append new word to the BIG dictionary
-with open(dictionaryFile, "a") as myfile:
 	for word in res:
 		myfile.write(str(word)+"\n")

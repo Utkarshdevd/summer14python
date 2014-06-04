@@ -25,6 +25,7 @@ import wikirandom
 
 '''-----------------------------------'''
 import getDocList
+import time
 '''-----------------------------------'''
 
 def main():
@@ -48,8 +49,14 @@ def main():
 
     # Our vocabulary
     vocab = file('./dictnostops.txt').readlines()
-    W = len(vocab)
 
+    '''-----------------------------------'''
+    newVocab = file(str(sys.argv[-1])).readlines()
+    for _ in newVocab:
+        vocab.append(_)
+    '''-----------------------------------'''
+
+    tic = time.time()
     # Initialize the algorithm with alpha=1/K, eta=1/K, tau_0=1024, kappa=0.7
     olda = onlineldavb.OnlineLDA(vocab, K, D, 1./K, 1./K, 1024., 0.7)
     # Run until we've seen D documents. (Feel free to interrupt *much*
@@ -60,7 +67,7 @@ def main():
             wikirandom.get_random_wikipedia_articles(batchsize)
         '''
         '''-----------------------------------'''
-        docset = getDocList.getDocs(sys.argv[2])
+        docset = getDocList.getDocs(sys.argv[-2])
         '''-----------------------------------'''
 
         # Give them to online LDA
@@ -78,6 +85,8 @@ def main():
         if (iteration % 10 == 0):
             numpy.savetxt('lamda/lambda-%d.dat' % iteration, olda._lambda)
             numpy.savetxt('gamma/gamma-%d.dat' % iteration, gamma)
+    toc = time.time()
+    print "Time taken : ", toc - tic, " sec."
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,3 @@
-import sys
 import nameGen
 
 def getDocs(parameterFile):
@@ -13,10 +12,12 @@ def getDocs(parameterFile):
 	res_Path = paramF.readline().strip().split(" ")[2]
 	res_BaseName = paramF.readline().strip().split(" ")[2]
 	res_Extension = paramF.readline().strip().split(" ")[2]
+	res_StartNo = int(paramF.readline().strip().split(" ")[2])
+	res_EndNo = int(paramF.readline().strip().split(" ")[2])
 
 	docs = []
-	for currentNo in range(startNo, endNo+1):
-		fileName = nameGen.getVar(res_Path, res_BaseName, currentNo, res_Extension)
+	for _ in range(res_StartNo, res_EndNo):
+		fileName = nameGen.getVar(res_Path, res_BaseName, _, res_Extension)
 
 		with open(fileName, "r") as myFile:
 			data = myFile.read()

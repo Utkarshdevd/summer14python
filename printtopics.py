@@ -22,7 +22,25 @@ import sys, os, re, random, math, urllib2, time, cPickle
 import numpy
 
 import onlineldavb
+'''--------------------'''
+from pylab import *
 
+def plotData(dataValue, dataId):
+    n = len(dataId)
+    X = np.arange(n)
+    Y1 = []
+    for _ in dataValue:
+        Y1.append(100*_)
+    print Y1
+    bar(X, Y1, facecolor='#9999ff', edgecolor='white')
+
+    for x,y,ID in zip(X,Y1, dataId):
+        text(x+0.4, y+0.05, '%.2f' % y, ha='center', va= 'bottom')
+        text(x+0.6, y+ 0.1, '%20s' % ID, ha='center', va= 'bottom', rotation=90)
+
+    ylim(0, 20)
+    show()
+'''--------------------'''
 def main():
     """
     Displays topics fit by onlineldavb.py. The first column gives the
@@ -32,6 +50,10 @@ def main():
     vocab = str.split(file(sys.argv[1]).read())
     testlambda = numpy.loadtxt(sys.argv[2])
 
+    newVocab = file(str(sys.argv[-1])).readlines()
+    for _ in newVocab:
+        vocab.append(_)
+
     for k in range(0, len(testlambda)):
         # all in a row
         lambdak = list(testlambda[k, :])
@@ -40,8 +62,19 @@ def main():
         temp = sorted(temp, key = lambda x: x[0], reverse=True)
         print 'topic %d:' % (k)
         # feel free to change the "53" here to whatever fits your screen nicely.
-        for i in range(0, 53):
-            print '%20s  \t---\t  %.4f' % (vocab[temp[i][1]], temp[i][0])
+        num = 12
+        dataId = []
+        dataValue = []
+        for _ in range(0, num):
+            #print '%20s  ---  %.4f' % (vocab[temp[_][1]], temp[_][0])
+            '''--------------------'''
+            dataId.append(vocab[temp[_][1]])
+            dataValue.append(float(temp[_][0]))
+            '''--------------------'''
+        '''--------------------'''
+        plotData(dataValue, dataId)
+        #raw_input("Press Enter to continue...")
+        '''--------------------'''
         print
 
 if __name__ == '__main__':
